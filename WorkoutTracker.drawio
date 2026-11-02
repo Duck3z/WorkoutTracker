@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="NXFCjFDuQ7dGBdRfukKP">
+    <mxGraphModel dx="1270" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-11" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-3" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;entryX=0.75;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" target="U7NeP3NSZkbM78m8b8PY-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-22" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Manage workouts" vertex="1">
+          <mxGeometry relative="1" x="-0.1549" y="3" as="geometry">
+            <mxPoint x="-17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-12" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-3" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-23" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Create exercise" vertex="1">
+          <mxGeometry relative="1" x="0.0283" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="JavaFX User Interface" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-10" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-4" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="U7NeP3NSZkbM78m8b8PY-3" value="launch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="110" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;&lt;span&gt;Application &lt;/span&gt;&lt;span&gt;Start&lt;/span&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-15" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-5" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-29" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Provide exercises" vertex="1">
+          <mxGeometry relative="1" x="0.0238" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-16" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-5" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-25" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Record exercise details" vertex="1">
+          <mxGeometry relative="1" x="-0.1691" as="geometry">
+            <mxPoint x="-13" y="25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-17" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-5" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-24" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-17" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Save exercise records" vertex="1">
+          <mxGeometry relative="1" x="0.0161" y="4" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Exercise Manager" vertex="1">
+          <mxGeometry height="60" width="120" x="565" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-20" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-6" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-27" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-20" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Display workouts" vertex="1">
+          <mxGeometry relative="1" x="-0.0436" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-30" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-6" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-31" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-30" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Save workout data" vertex="1">
+          <mxGeometry relative="1" x="-0.0783" y="-4" as="geometry">
+            <mxPoint x="-32" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;&lt;span&gt;Workout &lt;/span&gt;&lt;span&gt;Manager&lt;/span&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="60" width="120" x="150" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;&lt;span&gt;Workout &lt;/span&gt;&lt;span&gt;Data&lt;/span&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="60" width="120" x="345" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-19" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-8" style="edgeStyle=none;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-33" connectable="0" parent="U7NeP3NSZkbM78m8b8PY-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=12;defaultLabelBackgroundColor=page;" value="Load saved data" vertex="1">
+          <mxGeometry relative="1" x="-0.3241" y="1" as="geometry">
+            <mxPoint x="-1" y="23" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&#xa;&lt;span&gt;File &lt;/span&gt;&lt;span&gt;Storage &lt;/span&gt;&lt;span&gt;(Java &lt;/span&gt;&lt;span&gt;I/O)&lt;/span&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="60" width="120" x="345" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="U7NeP3NSZkbM78m8b8PY-32" edge="1" parent="1" source="U7NeP3NSZkbM78m8b8PY-8" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;curveGeometry=1;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontSize=12;defaultLabelBackgroundColor=page;startSize=8;endSize=8;" target="U7NeP3NSZkbM78m8b8PY-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
