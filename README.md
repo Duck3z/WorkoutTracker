@@ -12,7 +12,6 @@ The application will help users organize their exercise routines and keep track 
 Languages:
 
 Java
-CSS
 
 Libraries and Frameworks:
 
