@@ -1,7 +1,13 @@
 package edu.purdue.rickw.workouttracker;
 
+import edu.purdue.rickw.workouttracker.ui.TrackerWindow;
+import javax.swing.SwingUtilities;
+
 public class WorkoutTrackerApp {
     public static void main(String[] args) {
-        System.out.println("Welcome to the Workout Tracker App!");
+        SwingUtilities.invokeLater(() -> {
+            TrackerWindow window = new TrackerWindow();
+            window.showWindow();
+        });
     }
 }
