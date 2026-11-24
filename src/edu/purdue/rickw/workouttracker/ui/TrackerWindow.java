@@ -3,16 +3,19 @@ package edu.purdue.rickw.workouttracker.ui;
 import edu.purdue.rickw.workouttracker.WorkoutLogger;
 import edu.purdue.rickw.workouttracker.model.Exercise;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -28,7 +31,7 @@ public class TrackerWindow extends JFrame {
     private final JTextField weightField = new JTextField();
     private final JTextField dateField = new JTextField();
 
-    public TrackerWindow() {
+    public TrackerWindow() throws IOException {
         super("Workout Tracker");
         workoutLogger = new WorkoutLogger();
 
@@ -36,6 +39,7 @@ public class TrackerWindow extends JFrame {
         setLayout(new BorderLayout());
 
         JButton addButton = new JButton("Add");
+        JButton saveButton = new JButton("Save to File");
 
         JPanel inputPanel = new JPanel(new GridBagLayout());
         inputPanel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
@@ -51,7 +55,13 @@ public class TrackerWindow extends JFrame {
         buttonConstraints.anchor = GridBagConstraints.EAST;
         buttonConstraints.insets = new Insets(4, 4, 4, 4);
         inputPanel.add(addButton, buttonConstraints);
-        add(inputPanel, BorderLayout.NORTH);
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+        JPanel saveButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        saveButtonPanel.add(saveButton);
+        topPanel.add(saveButtonPanel, BorderLayout.NORTH);
+        topPanel.add(inputPanel, BorderLayout.CENTER);
+        add(topPanel, BorderLayout.NORTH);
 
         exerciseListPanel = new JPanel(new GridBagLayout());
         JScrollPane exerciseScrollPane = new JScrollPane(exerciseListPanel);
@@ -65,6 +75,7 @@ public class TrackerWindow extends JFrame {
 
         ActionListener addExerciseAction = event -> addExercise();
         addButton.addActionListener(addExerciseAction);
+        saveButton.addActionListener(event -> saveExercises());
         for (JTextField field : new JTextField[] {
                 exerciseNameField, descriptionField, repsField, setsField, weightField, dateField}) {
             field.addActionListener(addExerciseAction);
@@ -102,13 +113,19 @@ public class TrackerWindow extends JFrame {
             return;
         }
 
-        workoutLogger.saveExercise(new Exercise(
-                name,
-                descriptionField.getText().trim(),
-                repsField.getText().trim(),
-                setsField.getText().trim(),
-                weightField.getText().trim(),
-                dateField.getText().trim()));
+        try {
+            workoutLogger.saveExercise(new Exercise(
+                    name,
+                    descriptionField.getText().trim(),
+                    repsField.getText().trim(),
+                    setsField.getText().trim(),
+                    weightField.getText().trim(),
+                    dateField.getText().trim()));
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Could not save the workout: " + e.getMessage(),
+                    "Save failed", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         exerciseNameField.setText("");
         descriptionField.setText("");
         repsField.setText("");
@@ -117,6 +134,17 @@ public class TrackerWindow extends JFrame {
         dateField.setText("");
         refreshExerciseList();
         exerciseNameField.requestFocusInWindow();
+    }
+
+    private void saveExercises() {
+        try {
+            workoutLogger.saveToFile();
+            JOptionPane.showMessageDialog(this, "Workouts saved to workouts.csv.",
+                    "Save complete", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Could not save the workout: " + e.getMessage(),
+                    "Save failed", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void refreshExerciseList() {
