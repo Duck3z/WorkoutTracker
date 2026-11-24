@@ -21,6 +21,15 @@ public class Exercise {
         this.weight = weight;
         this.date = date;
     }
+    public Exercise(String name, int reps, int sets) {
+        this.name = name;
+        this.reps = String.valueOf(reps);
+        this.sets = String.valueOf(sets);
+        this.description = "";
+        this.weight = "";
+        this.date = "";
+    }
+    
 
     public String getName() {
         return name;
