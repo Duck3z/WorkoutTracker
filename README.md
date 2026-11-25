@@ -11,21 +11,19 @@ The application will help users organize their exercise routines and keep track 
 # Tech Stack
 Languages:
 
-Java
+Java 26
 
 Libraries and Frameworks:
 
-JavaFX
+Java Swing
 Java Collections
 Java Time
 Java I/O
 
 Development Tools:
 
-IntelliJ
+VsCode
 Git and GitHub
-Maven
-Scene Builder
 
 # Development Plan
 
