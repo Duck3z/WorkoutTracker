@@ -10,6 +10,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+/**
+ * Loads and persists exercises in the local CSV file.
+ */
 public class WorkoutLogger {
 
     private static final Path WORKOUT_FILE = Paths.get("workouts.csv");
@@ -19,14 +22,13 @@ public class WorkoutLogger {
         exercises = loadExercises();
     }
 
-    //returns the list of exercises
     public ArrayList<Exercise> getExercises() {
         return exercises;
     }
 
-    //loads exercises from the file, if it exists, otherwise returns an empty list
     public ArrayList<Exercise> loadExercises() throws IOException {
         ArrayList<Exercise> exercises = new ArrayList<>();
+        // A missing file represents a first run rather than a read failure.
         if (Files.notExists(WORKOUT_FILE)) {
             return exercises;
         }
@@ -50,6 +52,7 @@ public class WorkoutLogger {
     private Exercise parseExercise(String line) throws IOException {
         ArrayList<String> fields = new ArrayList<>();
         int index = 0;
+        // This parser follows CSV quoting rules without adding an external library.
         while (true) {
             StringBuilder field = new StringBuilder();
             if (index < line.length() && line.charAt(index) == '"') {
@@ -58,6 +61,7 @@ public class WorkoutLogger {
                 while (index < line.length()) {
                     char current = line.charAt(index++);
                     if (current == '"') {
+                        // Two quotes inside a quoted field represent one literal quote.
                         if (index < line.length() && line.charAt(index) == '"') {
                             field.append('"');
                             index++;
@@ -105,6 +109,7 @@ public class WorkoutLogger {
     public void saveExercise(Exercise exercise) throws IOException {
         ArrayList<Exercise> updatedExercises = new ArrayList<>(exercises);
         updatedExercises.add(0, exercise);
+        // Persist successfully before changing memory so a write failure does not appear as a saved exercise.
         saveToFile(updatedExercises);
         exercises.add(0, exercise);
     }
@@ -135,6 +140,7 @@ public class WorkoutLogger {
     private void writeCsvField(BufferedWriter writer, String value) throws IOException {
         writer.write('"');
         if (value != null) {
+            // Quoting is doubled inside a CSV field so commas and quotes remain valid in user input.
             writer.write(value.replace("\"", "\"\""));
         }
         writer.write('"');

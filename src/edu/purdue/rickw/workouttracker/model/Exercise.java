@@ -1,5 +1,8 @@
 package edu.purdue.rickw.workouttracker.model;
 
+/**
+ * Stores the data for one workout exercise.
+ */
 public class Exercise {
 
     private String name;
@@ -10,9 +13,9 @@ public class Exercise {
     private String date;
 
     public Exercise() {
-        // Default constructor
     }
 
+    // Exercise parameters are strings to allow free-form input and avoid restricting the user.
     public Exercise(String name, String description, String reps, String sets, String weight, String date) {
         this.name = name;
         this.description = description;
@@ -25,6 +28,7 @@ public class Exercise {
         this.name = name;
         this.reps = String.valueOf(reps);
         this.sets = String.valueOf(sets);
+        // Initialize optional fields to the CSV-compatible empty values used by this constructor.
         this.description = "";
         this.weight = "";
         this.date = "";

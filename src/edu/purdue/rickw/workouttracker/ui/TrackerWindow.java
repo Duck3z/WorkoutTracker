@@ -20,6 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+/**
+ * Owns the Swing presentation and forwards workout changes to the file-backed logger.
+ * Keeping persistence outside this class keeps window events separate from CSV handling.
+ */
 public class TrackerWindow extends JFrame {
 
     private final WorkoutLogger workoutLogger;
@@ -76,6 +80,7 @@ public class TrackerWindow extends JFrame {
         ActionListener addExerciseAction = event -> addExercise();
         addButton.addActionListener(addExerciseAction);
         saveButton.addActionListener(event -> saveExercises());
+        // Enter submits through the same path as the Add button, preventing duplicate action logic.
         for (JTextField field : new JTextField[] {
                 exerciseNameField, descriptionField, repsField, setsField, weightField, dateField}) {
             field.addActionListener(addExerciseAction);
@@ -109,6 +114,7 @@ public class TrackerWindow extends JFrame {
 
     private void addExercise() {
         String name = exerciseNameField.getText().trim();
+        // An exercise name is required so newly added and persisted rows remain identifiable.
         if (name.isEmpty()) {
             return;
         }
@@ -126,6 +132,7 @@ public class TrackerWindow extends JFrame {
                     "Save failed", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        // Clear only after persistence succeeds, preserving user input when saving fails.
         exerciseNameField.setText("");
         descriptionField.setText("");
         repsField.setText("");
@@ -148,6 +155,7 @@ public class TrackerWindow extends JFrame {
     }
 
     private void refreshExerciseList() {
+        // Rebuilding avoids stale rows after an exercise is inserted at the top of the logger.
         exerciseListPanel.removeAll();
 
         GridBagConstraints constraints = new GridBagConstraints();

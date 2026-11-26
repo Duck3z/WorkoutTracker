@@ -5,8 +5,12 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+/**
+ * Application entry point for the workout tracker.
+ */
 public class WorkoutTrackerApp {
     public static void main(String[] args) {
+        // Swing components must be created on the event-dispatch thread.
         SwingUtilities.invokeLater(() -> {
             try {
                 TrackerWindow window = new TrackerWindow();
