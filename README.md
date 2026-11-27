@@ -17,8 +17,9 @@ Libraries and Frameworks:
 
 Java Swing
 Java Collections
-Java Time
 Java I/O
+Java NIO
+AWT
 
 Development Tools:
 
@@ -27,11 +28,15 @@ Git and GitHub
 
 # Development Plan
 
-1. Set up the project and development environment.
-2. Create the basic JavaFX interface.
-3. Implement exercise creation.
-4. Add exercise information tracking.
-5. Implement workout management.
-6. Add saving and loading.
-7. Connect and test the application.
-8. Fix bugs and finalize the MVP.
+1. ~~Set up the project and development environment.~~
+2. ~~Create the basic JavaSwing interface.~~
+3. ~~Implement exercise creation.~~
+4. ~~Add exercise information tracking.~~
+6. ~~Add saving and loading.~~
+7. ~~Connect and test the application.~~
+8. ~~Finalize the MVP.~~
+
+# Schedule
+
+1. image file attatchment feature
+
