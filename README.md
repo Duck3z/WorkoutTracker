@@ -38,5 +38,5 @@ Git and GitHub
 
 # Schedule
 
-1. image file attatchment feature
+1. ~~image file attatchment feature~~
 
