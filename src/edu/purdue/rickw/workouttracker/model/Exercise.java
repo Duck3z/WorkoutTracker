@@ -11,18 +11,25 @@ public class Exercise {
     private String sets;
     private String weight;
     private String date;
+    private String imagePath;
 
     public Exercise() {
     }
 
     // Exercise parameters are strings to allow free-form input and avoid restricting the user.
     public Exercise(String name, String description, String reps, String sets, String weight, String date) {
+        this(name, description, reps, sets, weight, date, "");
+    }
+
+    public Exercise(String name, String description, String reps, String sets, String weight, String date,
+            String imagePath) {
         this.name = name;
         this.description = description;
         this.reps = reps;
         this.sets = sets;
         this.weight = weight;
         this.date = date;
+        this.imagePath = imagePath;
     }
     public Exercise(String name, int reps, int sets) {
         this.name = name;
@@ -32,6 +39,7 @@ public class Exercise {
         this.description = "";
         this.weight = "";
         this.date = "";
+        this.imagePath = "";
     }
     
 
@@ -81,5 +89,13 @@ public class Exercise {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

@@ -99,11 +99,12 @@ public class WorkoutLogger {
             }
         }
 
-        if (fields.size() != 6) {
-            throw new IOException("Expected 6 fields but found " + fields.size() + ".");
+        if (fields.size() != 6 && fields.size() != 7) {
+            throw new IOException("Expected 6 or 7 fields but found " + fields.size() + ".");
         }
         return new Exercise(fields.get(0), fields.get(1), fields.get(2),
-                fields.get(3), fields.get(4), fields.get(5));
+                fields.get(3), fields.get(4), fields.get(5),
+                fields.size() == 7 ? fields.get(6) : "");
     }
 
     public void saveExercise(Exercise exercise) throws IOException {
@@ -132,6 +133,8 @@ public class WorkoutLogger {
                 writeCsvField(writer, exercise.getWeight());
                 writer.write(',');
                 writeCsvField(writer, exercise.getDate());
+                writer.write(',');
+                writeCsvField(writer, exercise.getImagePath());
                 writer.newLine();
             }
         }

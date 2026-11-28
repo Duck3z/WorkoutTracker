@@ -7,18 +7,24 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Owns the Swing presentation and forwards workout changes to the file-backed logger.
@@ -34,6 +40,7 @@ public class TrackerWindow extends JFrame {
     private final JTextField setsField = new JTextField();
     private final JTextField weightField = new JTextField();
     private final JTextField dateField = new JTextField();
+    private final JTextField imagePathField = new JTextField();
 
     public TrackerWindow() throws IOException {
         super("Workout Tracker");
@@ -44,6 +51,8 @@ public class TrackerWindow extends JFrame {
 
         JButton addButton = new JButton("Add");
         JButton saveButton = new JButton("Save to File");
+        JButton chooseImageButton = new JButton("Choose Image");
+        imagePathField.setEditable(false);
 
         JPanel inputPanel = new JPanel(new GridBagLayout());
         inputPanel.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
@@ -54,10 +63,33 @@ public class TrackerWindow extends JFrame {
         addInputField(inputPanel, "Weight:", weightField, 2, 0, 1);
         addInputField(inputPanel, "Date:", dateField, 2, 2, 3);
         GridBagConstraints buttonConstraints = new GridBagConstraints();
-        buttonConstraints.gridx = 3;
+        JLabel imageLabel = new JLabel("Image:");
+        imageLabel.setLabelFor(imagePathField);
+        GridBagConstraints imageLabelConstraints = new GridBagConstraints();
+        imageLabelConstraints.gridx = 0;
+        imageLabelConstraints.gridy = 3;
+        imageLabelConstraints.anchor = GridBagConstraints.WEST;
+        imageLabelConstraints.insets = new Insets(4, 4, 4, 4);
+        inputPanel.add(imageLabel, imageLabelConstraints);
+
+        GridBagConstraints imagePathConstraints = new GridBagConstraints();
+        imagePathConstraints.gridx = 1;
+        imagePathConstraints.gridy = 3;
+        imagePathConstraints.gridwidth = 2;
+        imagePathConstraints.weightx = 1;
+        imagePathConstraints.fill = GridBagConstraints.HORIZONTAL;
+        imagePathConstraints.insets = new Insets(4, 4, 4, 4);
+        inputPanel.add(imagePathField, imagePathConstraints);
+
+        GridBagConstraints chooseImageConstraints = new GridBagConstraints();
+        chooseImageConstraints.gridx = 3;
+        chooseImageConstraints.gridy = 3;
+        chooseImageConstraints.insets = new Insets(4, 4, 4, 4);
+        inputPanel.add(chooseImageButton, chooseImageConstraints);
+
+        buttonConstraints.gridx = 4;
         buttonConstraints.gridy = 3;
         buttonConstraints.anchor = GridBagConstraints.EAST;
-        buttonConstraints.insets = new Insets(4, 4, 4, 4);
         inputPanel.add(addButton, buttonConstraints);
 
         JPanel topPanel = new JPanel(new BorderLayout());
@@ -79,6 +111,7 @@ public class TrackerWindow extends JFrame {
 
         ActionListener addExerciseAction = event -> addExercise();
         addButton.addActionListener(addExerciseAction);
+        chooseImageButton.addActionListener(event -> chooseImage());
         saveButton.addActionListener(event -> saveExercises());
         // Enter submits through the same path as the Add button, preventing duplicate action logic.
         for (JTextField field : new JTextField[] {
@@ -126,7 +159,8 @@ public class TrackerWindow extends JFrame {
                     repsField.getText().trim(),
                     setsField.getText().trim(),
                     weightField.getText().trim(),
-                    dateField.getText().trim()));
+                    dateField.getText().trim(),
+                    imagePathField.getText().trim()));
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Could not save the workout: " + e.getMessage(),
                     "Save failed", JOptionPane.ERROR_MESSAGE);
@@ -139,8 +173,18 @@ public class TrackerWindow extends JFrame {
         setsField.setText("");
         weightField.setText("");
         dateField.setText("");
+        imagePathField.setText("");
         refreshExerciseList();
         exerciseNameField.requestFocusInWindow();
+    }
+
+    private void chooseImage() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileFilter(new FileNameExtensionFilter("Image files",
+                ImageIO.getReaderFileSuffixes()));
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            imagePathField.setText(chooser.getSelectedFile().getAbsolutePath());
+        }
     }
 
     private void saveExercises() {
@@ -182,6 +226,9 @@ public class TrackerWindow extends JFrame {
             exerciseDetails.add(new JLabel("Weight: " + displayValue(exercise.getWeight())));
             exerciseDetails.add(new JLabel("Date: " + displayValue(exercise.getDate())));
             row.add(exerciseDetails, BorderLayout.CENTER);
+            if (exercise.getImagePath() != null && !exercise.getImagePath().isEmpty()) {
+                row.add(createImagePreview(exercise.getImagePath()), BorderLayout.EAST);
+            }
             constraints.gridy = i;
             exerciseListPanel.add(row, constraints);
         }
@@ -192,6 +239,26 @@ public class TrackerWindow extends JFrame {
         exerciseListPanel.add(new JPanel(), constraints);
         exerciseListPanel.revalidate();
         exerciseListPanel.repaint();
+    }
+
+    private JLabel createImagePreview(String imagePath) {
+        JLabel preview = new JLabel();
+        preview.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+        preview.setToolTipText(imagePath);
+        try {
+            java.awt.image.BufferedImage image = ImageIO.read(new File(imagePath));
+            if (image == null) {
+                preview.setText("Image unavailable");
+            } else {
+                double scale = Math.min(80.0 / image.getWidth(), 80.0 / image.getHeight());
+                int width = Math.max(1, (int) (image.getWidth() * scale));
+                int height = Math.max(1, (int) (image.getHeight() * scale));
+                preview.setIcon(new ImageIcon(image.getScaledInstance(width, height, Image.SCALE_SMOOTH)));
+            }
+        } catch (IOException e) {
+            preview.setText("Image unavailable");
+        }
+        return preview;
     }
 
     private String displayValue(String value) {
